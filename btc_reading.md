@@ -50,7 +50,25 @@
             * 助记词表示的种子： army van defense carry jealous true garbage claim echo media make crunch
             * 助记码，基于BIP-39
             * HD钱包，基于BIP-32
-
+              * HD钱包从单个根种子（root seed）中创建
+            * 技术细节
+              * 创建助记词
+              * 从助记词生成种子（助记符+盐，2048次hash）
+              * 可选密码短语
+            * 从种子中创造HD钱包
+              * 根种子输入到HMAC-SHA512算法中就可以得到一个可用来创造主私钥(m)（master private key(m) ）和主链代码（a master chain code）的哈希
+              * 主私钥（m）之后可以通过使用我们在本章先前看到的那个普通椭圆曲线m * G过程生来成相对应的主公钥（M）
+              * 链代码用于从母密钥中创造子密钥的那个函数中引入熵
+              * 私有子密钥的衍生
+                * 分层确定性钱包使用CKD（child key derivation)函数去从母密钥衍生出子密钥
+              * 使用衍生的子密钥
+              * 扩展密钥
+              * 公共子密钥推导
+              * 在网店中使用扩展公钥（xpub）
+              * 硬化子密钥的衍生
+              * 正常衍生和强化衍生的索引号码
+              * HD钱包密钥识别符（路径）
+              * HD钱包树状结构的导航
 
       
     
