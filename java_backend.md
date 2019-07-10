@@ -1,3 +1,14 @@
+## webservice
+
+#### SOAP
+
+Web service建好以后，你或者其他人就会去调用它。简单对象访问协议(SOAP)提供了标准的RPC方法来调用Web service。实际上，SOAP在这里有点用词不当：它意味着下面的Web service是以对象的方式表示的，但事实并不一定如此：你完全可以把你的Web service写成一系列的C函数，并仍然使用SOAP进行调用。SOAP规范定义了SOAP消息的格式，以及怎样通过HTTP协议来使用SOAP。SOAP也是基于XML（标准通用标记语言下的一个子集）和XSD的，XML是SOAP的数据编码方式。
+
+#### WSDL
+
+你会怎样向别人介绍你的Web service有什么功能，以及每个函数调用时的参数呢？你可能会自己写一套文档，你甚至可能会口头上告诉需要使用你的Web service的人。这些非正式的方法至少都有一个严重的问题：当程序员坐到电脑前，想要使用你的Web service的时候，他们的工具(如Visual Studio)无法给他们提供任何帮助，因为这些工具根本就不了解你的Web service。
+
+
 ## servlet
 request.getServletPath()，request.getContextPath()
 
