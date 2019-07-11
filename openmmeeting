@@ -14,4 +14,4 @@ wsdl2java http://localhost:5080/openmeetings/services/RoomService?wsdl
 
 java文件生成在 cmd所在的当下目录，c:/user/1027
 
-代码比wsinport生成的全，还带了别的依赖（比如right）。
+代码比wsinport生成的全，还带了别的依赖（比如right）。 修正：生成代码是一样的，wsdl一样咋会不一样，但是打包方式不同，wsimport都生成在一个包下面
