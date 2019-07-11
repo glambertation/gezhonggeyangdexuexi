@@ -1,0 +1,17 @@
+## 导入客户端代码
+
+1. soap接口 wsdl生成客户端代码
+
+wsimport -s C:\Users\10273\Desktop\maven-eclipse\test\src  -p userwebService   http://localhost:5080/openmeetings/services/UserService?wsdl
+
+在生成room的代码时，报type类型冲突 看了wsdl，虽然定义在不同的命名空间，但type名称一样，wsimport导入失败
+
+换cxf 下载bin，配置环境：
+CXF_HOME 是cxf安装包的位置 （会调lib）；
+path 是cxf bin目录的位置 ；
+
+wsdl2java http://localhost:5080/openmeetings/services/RoomService?wsdl
+
+java文件生成在 cmd所在的当下目录，c:/user/1027
+
+代码比wsinport生成的全，还带了别的依赖（比如right）。
