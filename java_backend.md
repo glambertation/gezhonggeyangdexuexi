@@ -1,3 +1,24 @@
+## FILEIO
+
+https://www.jianshu.com/p/c752767cff22
+
+https://blog.csdn.net/amo_te_ama_me/article/details/40587997
+
+三种read，read(),read(byte[]), read(byte[] b, int off, int len)
+
+```
+FileInputStream input=new FileInputStream(oldAddress);
+FileOutputStream output=new FileOutputStream(newAddress);
+byte[] buffer=new byte[500];
+int in=input.read(buffer);
+while(in!=-1){
+  output.write(buffer,0,in);
+  in=input.read(buffer);
+        }
+```
+
+read()是一个字节一个字节读，奇慢无比，而且我不知道为啥它还阻塞了，fileio为啥能阻塞
+
 ## webservice
 
 #### SOAP
