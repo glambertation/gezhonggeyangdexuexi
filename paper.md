@@ -1,5 +1,29 @@
 ## NLP
 
+#### chendanqi
+(https://www.cs.princeton.edu/~danqic/papers/thesis.pdf)
+```
+part of speech tagging ：断句，知道名词，副词，动词
+name entity recognition 实体识别，识别人名 地名
+syntactic parsing: 句法分析，理解单词之间的关系，或者句子结构
+coreference resolution: 代词借代 it 指谁， the girls 指谁
+
+用阅读理解来测试机器是否读懂文章
+reading comprehension
+阅读理解的成果主要取决于以下两个原因
+1.大量监督学习数据库（passage，question, answer）
+2.神经网络阅读理解的发展（公式化问题，建造模型，系统主要成分，优劣）
+
+神经网络阅读理解的两个方向
+1.open-domain question answering:  检索和阅读理解的 联合挑战（例如回答问题百科wiki）
+2.conversational question answering：对话和阅读理解的结合，多会和问题回答
+
+chapter2
+reading comprehension的综述
+1.作为一个监督学习任务，4种类别
+2.reading comprehension 和 question answering的区别：他们的goals不同
+```
+
 ACL2019最佳论文，共八篇文章获奖。其中包含一篇最佳长论文、一篇最佳短论文、五篇杰出论文、一篇最佳 Demo 论文。
 
 #### 弥补神经机器翻译在训练和推理过程之间的缺口
