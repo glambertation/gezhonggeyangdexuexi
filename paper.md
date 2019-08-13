@@ -122,6 +122,28 @@ Vcar = [0, 0, 0, 0 , ,,,,,, 1,,,,,,,0]转置
 
 2.循环神经网络 Recurrent neural networks
 
+RNN使用可变长度的序列
+ht = f(ht−1, xt; Θ)
+
+对于nlp应用，我们把一句话或者一段路作为一个word序列，每个单词都是一个向量（通常被word embedding训练过）
+Vanilla RNNs take the form of
+ht = tanh(Whh*ht−1 + Whx*xt + b)
+
+ht ∈ Rh 是模型
+Whh ∈ Rh×h
+,Whx ∈ Rh×d
+, b ∈ Rh
+是要学习的参数
+
+为了优化RNN模型，各种方法都被提出来了
+LSTM，GRU 比较有名。
+LSTM最有竞争力。
+
+rnn有更细致一点的，双向rnn
+
+3.attention mechanism 注意机制
+第一次出现于 seq2seq模型，后来用于nlp
+
 ```
 
 ACL2019最佳论文，共八篇文章获奖。其中包含一篇最佳长论文、一篇最佳短论文、五篇杰出论文、一篇最佳 Demo 论文。
