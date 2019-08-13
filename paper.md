@@ -81,6 +81,47 @@ final goals不一样
 
 chapter3
 
+3.1以前的模型 特征提取模型
+特征模型是
+the correct answer 阿尔法
+is expected to rank higher than all other candidate entities:
+
+w转置fp,q(a) > w转置fp,q(e), ∀e ∈ E \ {a},
+
+特征向量
+ a feature vector fp,q(e) ∈ R
+
+p = passage 
+q= question
+
+每个实体e都构建了特征向量后，我们就可以用ml算法（svm 逻辑回归 ）
+
+特征选取的时候，很定制化  （频率啊，位置啊 是不是问句 ; 和段落问题的关系啊 距离啊 ; 依赖现有工具 pos parse的标记精度等）
+feature eg:
+e是否在问题里
+e是否在段落里
+e频率
+e的第一个位置
+word distance
+sentence co-occurrence
+n-gram exact match
+dependency parse match
+别人的研究成果里研究了各种feature
+
+3.2 一个神经网络的方法 the astanford attentive reader
+基础知识
+1.word embedding
+高维向量表示
+Vcar = [0, 0, 0, 0 , ,,,,,, 1,,,,,,,0]转置
+两个词之间向量无关 cos（Va,Vb）=0
+低维会减轻这个问题 cos(car vechicle)<cos(car, man)
+
+假设 words出现在相似的上下文 趋近 有相似的意义 - 》word embeeding 可以从无标记语料库中 有效学习。
+一些对外发布的版本，例如：word2vec,glove,fasttext.
+这些是现代nlp系统的主流。
+
+2.循环神经网络 Recurrent neural networks
+
 ```
 
 ACL2019最佳论文，共八篇文章获奖。其中包含一篇最佳长论文、一篇最佳短论文、五篇杰出论文、一篇最佳 Demo 论文。
