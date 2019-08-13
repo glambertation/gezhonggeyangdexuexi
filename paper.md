@@ -45,6 +45,42 @@ comprehension models have several great advantages
 3.神经网络不需要构建特征模型，所以它本身概念上简单，也能更专注于设计神经架构。tensorflow 和 tytorch太nb了，有他们开发新模型很快~
 
 nlp在squad数据库上面表现很好，但是不能说明解决了阅读理解的问题，因为squad的数据例子都很简单，不需要复杂的理解
+
+后面就又更多的数据库，例子很复杂，多种阅读理解挑战
+
+2.2 任务定义
+1.公式问题
+a passage of text p and a corresponding question q
+answer a as output
+f : (p, q) −→ a
+
+四种阅读理解模式
+填空 CNN/DAILY MAIL
+选择 MCTEST
+从文中选择答案 SQUAD
+自由回答 d NARRATIVEQA 
+
+填空和选择 评价方式看重精确
+从文中选择答案 另一种评价方式
+em 对了1错了0
+f1 计算预测和正确答案的重叠率
+F1 =(2 × Precision × Recall)/(Precision + Recall)
+标点忽略不计，a an the 忽略不计
+
+自由回答时
+用标准衡量矩阵 来检测NLG过程（NLG比如说翻译，总结，BLEU，Meteor，ROUGE等）
+
+2.3 阅读理解 vs 问题回答
+final goals不一样
+回答问题是基于知识库 回答人类提出的问题；（如果识别区分相关资料，如何整合知识，如何学习什么是人类常见问题）
+阅读理解 是用问题衡量阅读理解，所以问题答案来自于text本身。
+
+阅读理解对构建问题回答系统也有帮助
+
+2.4 数据与模型
+
+chapter3
+
 ```
 
 ACL2019最佳论文，共八篇文章获奖。其中包含一篇最佳长论文、一篇最佳短论文、五篇杰出论文、一篇最佳 Demo 论文。
