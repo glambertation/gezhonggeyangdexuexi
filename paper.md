@@ -22,6 +22,29 @@ chapter2
 reading comprehension的综述
 1.作为一个监督学习任务，4种类别
 2.reading comprehension 和 question answering的区别：他们的goals不同
+
+机器学习的方法（2013-2015）
+ f : (passage, question) ?→ answer.
+以前的那些模型的缺点
+1.依赖已有的语言工具，例如parsers 和 semantic role labeling,这种现有工具都是一个领域模型训练出来的（比如说是新闻类）
+杠杆化使用这种标注，会给ml模型带来噪声。
+更高阶的标注会get worse。（eg discourse relastions vs part of speech tagging）
+
+2.模仿人类级别的理解很难，很难从当下的语句表达中 构造有效的特征
+3.人类标记的量太小了，不足以支撑庞大的统计模型
+
+
+ml的复兴
+SQUAD数据库
+
+Differing from feature-based classifiers, neural reading
+comprehension models have several great advantages
+1.不依赖于下游特征，避免语言标注带来的噪音，自己学自己
+2.传统的nlp特征模型，有个缺点：特征太少；数据太少，
+也不好校正特征的权重
+3.神经网络不需要构建特征模型，所以它本身概念上简单，也能更专注于设计神经架构。tensorflow 和 tytorch太nb了，有他们开发新模型很快~
+
+nlp在squad数据库上面表现很好，但是不能说明解决了阅读理解的问题，因为squad的数据例子都很简单，不需要复杂的理解
 ```
 
 ACL2019最佳论文，共八篇文章获奖。其中包含一篇最佳长论文、一篇最佳短论文、五篇杰出论文、一篇最佳 Demo 论文。
