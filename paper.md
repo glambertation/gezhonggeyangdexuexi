@@ -144,6 +144,57 @@ rnn有更细致一点的，双向rnn
 3.attention mechanism 注意机制
 第一次出现于 seq2seq模型，后来用于nlp
 
+主要是，我们想预测句子的情感，或者翻译句子，我们通常用rnn给单句编码：h1,h2,h3,...hn，并且用hn来预测情感或者目标语言的第一个单词。
+这需要模型能把一个句子中所有必要信息压缩到一个固定长度的向量里。这是个瓶颈。
+注意力机制，比起把所有信息压缩到last hidden vector，它随时着眼于hidden vector，选择一个合适的subset of vectors。
+
+大概来说，注意力机制就是给每个hi算个分，再分类器始终返回一个离散分布
+
+近期，有人说注意力机制不需要和rnn一起使用，rnn可以纯粹基于word embedding 和前向反馈网络，与此同时提供最小的序列信息。
+这种模型参数少，可大规模并行运行，
+transformer模型 也是一个趋势。
+
+3.2.2 模型
+
+模型综述
+首先build a vector 代表问题，passage的每个token一个vector
+计算问题和passage word的相似函数
+用question-passage 相似分数来决定开始和结束位置。
+低维度，pre-train的word embedding 给每个段落和问题的单词。
+编码和相似函数共同优化最后的答案预测。
+
+细节
+question encoding
+问题的每个word 先embedding，再bi-lstm
+这些hidden unit 再通过attention机制变成一个向量
+（我们发现 加这一层注意力layer 有用，因为它给相关问题words加了更多权重）
+
+passage encoding
+先对序列进行bi-lstm
+序列有两种，一种是passage的每个单词，一种是和问题的相关性。
+第一种的话，先把单词embedding了，我们也加了一些手工特征（pos，NER named entity recognition tags TF term frequency ）
+pos 和 ner 用现有工具转化，因为tag是很小。
+tf是测量words在段落里出现多少次
+
+第二种的话，有两种表现方式
+1.em exact match。作者用了三种binary features：original，lowercase，lemma form
+2.aligned question embedding: 相近单词之间的联系 比如car 和 vehicle
+
+p˜i = (femb(pi), ftoken(pi), fexact match(pi), falign(pi)) ∈ Rd˜
+
+回答预测 answer prediction
+注意力机制
+两个分类器，一个预测回答start，一个预测回答end
+
+训练和推理
+训练目标是最小化交互熵loss
+参数由随机梯度优化
+
+3.2.3 拓展
+讲了几个模型，都是得到向量o，用o来完成预测（预测 完形填空，单选等）
+o的形成形式各有不同，但输入都是pi q。
+
+
 ```
 
 ACL2019最佳论文，共八篇文章获奖。其中包含一篇最佳长论文、一篇最佳短论文、五篇杰出论文、一篇最佳 Demo 论文。
