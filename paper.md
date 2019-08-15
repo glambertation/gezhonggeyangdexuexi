@@ -194,6 +194,63 @@ p˜i = (femb(pi), ftoken(pi), fexact match(pi), falign(pi)) ∈ Rd˜
 讲了几个模型，都是得到向量o，用o来完成预测（预测 完形填空，单选等）
 o的形成形式各有不同，但输入都是pi q。
 
+3.3 实验
+3.3.1 数据库
+CNN/DAILY MAIL  和 SQUAD
+
+3.3.2 实验细节
+1.stacked bilstm 增加bi-lstm的深度 在question和passage编码的时候。用三层 bi-lstm
+2.dropout
+用来归一化的
+dropout可以加载 word embedding ， input vector，lstm每一层的hidden vector
+variational drop 比 standard dropout 在rnn上效果好
+ie: the same units are gropped at each time step
+
+3.处理word embedding 
+保持最常用的k的单词种类在训练序列
+把其他单词都map给unk token
+用pre train的word embedding来初始化 k words。
+
+单词量小 我们也建议word embeding ，因为可以帮助找到高频问题单词
+
+4.model specifications 模型规格
+语言标注（lemma, part-of-speech, named entity tags, dependency parse） Stanford CoreNLP
+toolkit
+we sort all the examples by the length of its passage, and randomly sample a mini-batch of size 32 for each update
+
+对于CNN/DAILY MAIL的结果，我们用小写，100维的word embedding; 注意力和output参数初始化为 均匀分布[-0.01, +0.01]； lstm初始化高斯分布N(0,0.1);一层bi-lstm h=128给cnn h=256给daily mail； 优化是用SGD，修正学习比率是0.1；dropout0.2给embedding layer；梯度超过10 用gradient clipping。
+
+ SQUAD，用3层bi-lstm，h=128给question和paragraph编码； ADAMAX 来优化，dropout大约0.3给word embedding 和 lstm里所有的hidden units。300维的word embedding；840B的网络爬虫数据来初始化，只得出1000个高频 问题的单词。
+
+3.3.3 实验结果
+baseline 基线
+
+
+3.3.3.3 ablation studies
+消去学习
+
+3.3.4 我们学了啥
+exact match : placeholder最近的单词 也会在实体旁边被发现
+
+sentence-level paraphrasing:问题是由段落中确切的一句话改写，那答案就在那个句子中
+
+partial clue：尽管我们没法找到一个完全的语义匹配在问题和一些句子中间，但我们还是能推断答案，从一些部分线索，比如单词或者概念重叠
+
+multiple sentences：复句必须参与推断正确答案
+
+coreference error 指代错误：这一类我们认为没有答案
+
+ambiguous or hard：这一类我们任务人类也不能获得正确答案
+
+3.4 未来挑战
+word representations
+
+attention mechanisms(bi-directional attention, self-attention over passage)
+
+alternatives to lstm
+
+others(training objectives, data augmentation)
+
 
 ```
 
